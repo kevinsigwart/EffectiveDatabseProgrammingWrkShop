@@ -5,27 +5,27 @@ This repository has example code for the effective database programming workshop
 
 
 ## Steps
-Connect to Staging Database
-Remove Old Features
-Get Alerts
-Get Counties Associated with Alert
-Insert Alerts\Counties into Feature Class
-Synch Changes with Replicated Database
-Clean up workspace
+###Connect to Staging Database
+###Remove Old Features
+###Get Alerts
+###Get Counties Associated with Alert
+###Insert Alerts\Counties into Feature Class
+###Synch Changes with Replicated Database
+###Clean up workspace
 
 ## Pseudo Code
-ConnectToStaggingDB()
-DeleteOldRecords()
-GetAlerts()
-AddAlertsToFeatureClass ( alerts )
-	For each alert
-		For each County
-			GetCountyShape ( FIPS )
-			InsertRecord ( alert, shape )
-SynchChanges()
-	ConnectToProductionDatabase()
-	SynchtonizeChanges()
-DataCleanUp()
+###ConnectToStaggingDB()
+###DeleteOldRecords()
+###GetAlerts()
+###AddAlertsToFeatureClass ( alerts )
+	####For each alert
+		#####For each County
+			######GetCountyShape ( FIPS )
+			######InsertRecord ( alert, shape )
+###SynchChanges()
+	####ConnectToProductionDatabase()
+	####SynchtonizeChanges()
+###DataCleanUp()
 
 
 
