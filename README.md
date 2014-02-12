@@ -18,13 +18,13 @@ This repository has example code for the effective database programming workshop
 ###DeleteOldRecords()
 ###GetAlerts()
 ###AddAlertsToFeatureClass ( alerts )
-	####For each alert
-		#####For each County
-			######GetCountyShape ( FIPS )
-			######InsertRecord ( alert, shape )
+	For each alert
+		For each County
+			GetCountyShape ( FIPS )
+			InsertRecord ( alert, shape )
 ###SynchChanges()
-	####ConnectToProductionDatabase()
-	####SynchtonizeChanges()
+	ConnectToProductionDatabase()
+	SynchtonizeChanges()
 ###DataCleanUp()
 
 
