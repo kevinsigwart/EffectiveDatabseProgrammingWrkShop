@@ -5,13 +5,13 @@ This repository has example code for the effective database programming workshop
 
 
 ## Steps
-###Connect to Staging Database
-###Remove Old Features
-###Get Alerts
-###Get Counties Associated with Alert
-###Insert Alerts\Counties into Feature Class
-###Synch Changes with Replicated Database
-###Clean up workspace
+###1.  Connect to Staging Database
+###2.  Remove Old Features
+###3.  Get Alerts
+###4.  Get Counties Associated with Alert
+###5.  Insert Alerts\Counties into Feature Class
+###6.  Synch Changes with Replicated Database
+###7.  Clean up workspace
 
 ## Pseudo Code
 ###ConnectToStaggingDB()
