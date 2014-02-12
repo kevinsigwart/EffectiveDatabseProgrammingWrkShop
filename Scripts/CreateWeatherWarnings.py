@@ -42,16 +42,16 @@ def connectToDatabase(databaseName,connectionName):
     # Provide connection information
     # http://resources.arcgis.com/en/help/main/10.2/index.html#//00170000016q000000
     
-    instance = "mycomputername"  
-    database = databaseName 
+    instance = "mymachinename"  
+    database =  databaseName #'DCDevSummit'
     user = 'GISDataOwner'
-    password = 'mypassword'
+    password = 'MySecretPassword1!'  #Hey It's better than 123456
             
     Connection_File_Name = scratchWS + "\\" + connectionName + ".sde"
         
     arcpy.AddMessage("Creating ArcSDE Connection File...")
     #arcpy.CreateDatabaseConnection_management(scratchWS, "connection.sde","SQL_SERVER",instance,"OPERATING_SYSTEM_AUTH","#","#","SAVE_USERNAME",database,"#","POINT_IN_TIME","#","#")    
-    arcpy.CreateDatabaseConnection_management(scratchWS, "connection.sde","SQL_SERVER",instance,"DATABASE_AUTH",user,password ,"SAVE_USERNAME",database,"#","POINT_IN_TIME","#","#")    
+    arcpy.CreateDatabaseConnection_management(scratchWS, connectionName + ".sde","SQL_SERVER",instance,"DATABASE_AUTH",user,password ,"SAVE_USERNAME",database,"#","POINT_IN_TIME","#","#")    
 
     
     return Connection_File_Name
@@ -181,9 +181,13 @@ def getAlerts():
 
 def synChanges():
     #http://resources.arcgis.com/en/help/main/10.2/index.html#//00170000001s000000
-    replicaDB = connectToDatabase(DCDevSummitProd,'replicaDB');
-    arcpy.SynchronizeChanges_management("MySDEdata.sde", "My2wayReplica", "MySDEdata_child.sde", "BOTH_DIRECTIONS", \
+    arcpy.AddMessage("Connecting to replica DB")
+    replicaDB = connectToDatabase("DCDevSummitProd",'replicaDB');
+
+    arcpy.SynchronizeChanges_management(connectionString, "WeatherFeed", replicaDB, "BOTH_DIRECTIONS", \
     "IN_FAVOR_OF_GDB1", "BY_ATTRIBUTE", "")    
+    
+    arcpy.AddMessage("Changes Sychronized")
 
 def dataCleanup():
     try:
@@ -217,7 +221,7 @@ alerts = getAlerts();
 addDataToFeatureClass(alerts)
 
 #SYNCHRONIZE STAGING WITH PRODUCTION GEODATABASE
-#synChanges():
+synChanges()
 
 #REMOVE ALL TEMPORARY FILES
 dataCleanup()
